@@ -18,19 +18,19 @@ class NetworkManager {
     let jsonDecoder = JSONDecoder()
     
     func searchFlickr<T>(_ searchText: String, page: Int = 1) -> AnyPublisher<T, FlickrError> where T: Decodable {
-        var components = URLComponents()
-        components.scheme = OpenWeatherAPI.scheme
-        components.host = OpenWeatherAPI.host
-        components.path = OpenWeatherAPI.path + "/forecast"
-        
-        components.queryItems = [
-          URLQueryItem(name: "q", value: city),
-          URLQueryItem(name: "mode", value: "json"),
-          URLQueryItem(name: "units", value: "metric"),
-          URLQueryItem(name: "APPID", value: OpenWeatherAPI.key)
-        ]
-        
-        return components
+//        var components = URLComponents()
+//        components.scheme = OpenWeatherAPI.scheme
+//        components.host = OpenWeatherAPI.host
+//        components.path = OpenWeatherAPI.path + "/forecast"
+//        
+//        components.queryItems = [
+//          URLQueryItem(name: "q", value: city),
+//          URLQueryItem(name: "mode", value: "json"),
+//          URLQueryItem(name: "units", value: "metric"),
+//          URLQueryItem(name: "APPID", value: OpenWeatherAPI.key)
+//        ]
+//        
+//        return components
         guard let searchURL = getSearchUrl(searchText,page: page) else {
             let error = FlickrError.network(description: "Couldn't create URL")
             return Fail(error: error).eraseToAnyPublisher()
